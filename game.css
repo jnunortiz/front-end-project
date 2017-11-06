@@ -1,0 +1,120 @@
+a:hover {
+    background-color: #4dff4d;
+}
+
+body {
+    background-color: #f2f2f2;
+}
+
+button {
+    background-color: #4d4dff;
+    border: none;
+    color: white;
+    padding: 1.5% 2%;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.final {
+    visibility: visible;
+    background-color: #e6ffe6;
+}
+
+.final:hover {
+    background-color: #e6ffe6;
+}
+
+.game-container {
+    margin: 15%;
+}
+
+.header {
+    margin-left: 37%;
+    margin-top: 1%;
+    border-right: none;
+    background-color: #333;
+}
+
+.home a {
+    display: block;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+}
+
+.home:hover {
+    background-color: #009900;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+li {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: #4CAF50;
+    border-right: 1px solid white;
+    font-size: 130%;
+    height: 20%;
+    padding: 0;
+}
+
+.main-element {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -32%;
+}
+
+table {
+    border: 10px solid #9999ff;
+    background-color: #9999ff;
+    border-collapse: separate;
+    border-radius: 20px;
+    table-layout: fixed;
+    width: 80%;
+}
+
+th {
+    height: 80px;
+    text-align: center;
+    border: 10px solid #9999ff;
+    background-color: #99ff99;
+}
+
+th a {
+    display: block;
+    background-color: #99ff99;
+    padding: 3%;
+    height: 100px;
+}
+
+.theme:hover {
+    background-color: #009900;
+}
+
+span {
+    font-size: 300%;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-left: -0.65%;
+}
+
+.visible {
+    visibility: visible;
+}
