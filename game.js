@@ -1,11 +1,12 @@
 function game() {
-    /*The function game will be called by the start button to initialize the game*/
+    /* The function game will be called by the start button to initialize the game */
     var seconds_all = 0
     var seconds_timer = 0
     var minutes_timer = 0
     var hours_timer = 0
     var time
     var chronometer = setInterval(function() {
+        /* Creates timer */
         seconds_all++;
         hours = Math.floor(seconds_all / 3600)
         hours_timer = Math.floor(seconds_all / 3600)
@@ -43,10 +44,10 @@ function game() {
             '<img id="15" class="invisible" src="png\\santa\\santa-96.png" alt="santa">',
             '<img id="16" class="invisible" src="png\\star\\star-96.png" alt="star">'
         ]
-        /*I obtained this function from:
+        /* I obtained this function from:
         stackoverflow and added the color parameter */
     function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
-        /*This function draws a star*/
+        /* This function draws a star */
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         var rot = Math.PI / 2 * 3;
@@ -76,9 +77,10 @@ function game() {
         ctx.fill();
     }
 
-    /*I obtained this function from: 
+    /* I obtained this function from: 
     https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array */
     function shuffle(a) {
+        /* Disorders randomly the list */
         var j, x, i;
         for (i = a.length - 1; i > 0; i--) {
             j = Math.floor(Math.random() * (i + 1));
@@ -99,9 +101,8 @@ function game() {
         location.reload();
     });
 
-    var clicks, image_id, image_src, image_class, count;
+    var image_id, image_src, image_class, count;
     moves = 0
-    clicks = 0
     image_id = []
     image_src = []
     image_class = []
@@ -111,15 +112,95 @@ function game() {
     $('.metrics').text("Number of moves: " + moves)
     var clickDisabled = false;
     $("a").click(function() {
+        /* Generates the events after clicking */
         if (clickDisabled)
             return;
-        moves = moves + 1
-        $('.metrics').text("Number of moves: " + moves)
         count = 0
-        clicks = clicks + 1
         image_id.push("#" + $(this).children().attr("id"))
         image_src.push($(this).children().attr("src"))
-        $(this).children().toggleClass("invisible visible")
+        if (image_id.length === 1) {
+            moves = moves + 1
+            $(this).children().toggleClass("invisible visible")
+        }
+        if (image_id.length === 2) {
+            if (image_id[0] === image_id[1]) {
+                image_id.pop()
+                image_src.pop()
+            } else if (image_id.length === 2) {
+                if (image_id[0] !== image_id[1]) {
+                    moves = moves + 1
+                    $(this).children().toggleClass("invisible visible")
+                    setTimeout(function() {
+                        /*Analyzes a pair of cards*/
+                        if (image_src[0] === image_src[1]) {
+                            $(image_id[0]).removeClass().addClass("final")
+                            $(image_id[1]).removeClass().addClass("final")
+                            $(image_id[0]).parent().removeClass().addClass("final")
+                            $(image_id[1]).parent().removeClass().addClass("final")
+                            $(image_id[0]).parent().removeClass().addClass("final")
+                            $(image_id[1]).parent().removeClass().addClass("final")
+                            image_class = $('img').each(function() {
+                                image_class.push($(this))
+                            })
+                            for (var i = 0; i < image_class.length; ++i) {
+                                image_class[i] = $(image_class[i]).attr("class")
+                            }
+                            for (var i = 0; i < image_class.length; ++i) {
+                                if (image_class[i] === "final") {
+                                    image_class[i] = 0
+                                } else {
+                                    image_class[i] = 1
+                                }
+                            }
+                            for (var i = 0; i < image_class.length; ++i) {
+                                count = count + image_class[i]
+                            }
+                            if (count === 0) {
+                                $('body').empty()
+                                $('body').html(`
+                                    <div class="main-element">
+                                    <span>
+                                        <b>CONGRATULATIONS!! YOU WON!!</b>
+                                    </span>
+                                    </br>
+                                    <span class="message"></span>
+                                    </br>
+                                    </br>
+                                    <div class="wraper">
+                                        <button onclick="reload()">Play Again</button>
+                                    </div>
+                            
+                                    </div>
+                                    `)
+                                if (minutes === 0) {
+                                    $('.message').text(moves + " moves" + ", " + rating + " star rating" + " and " +
+                                        seconds + " seconds.")
+                                } else if (minutes === 1) {
+                                    $('.message').text(moves + " moves" + ", " + rating + " star rating" + ", " +
+                                        seconds + " seconds and " + minutes + " minute.")
+                                } else {
+                                    $('.message').text(moves + " moves" + ", " + rating + " star rating" + ", " +
+                                        seconds + " seconds and " + minutes + " minutes.")
+                                }
+
+                            }
+                        } else {
+                            $(image_id[0]).removeClass().addClass("invisible")
+                            $(image_id[1]).removeClass().addClass("invisible")
+                        }
+                        image_id = [];
+                        image_src = [];
+
+                    }, 1000);
+                    clickDisabled = true;
+                    setTimeout(function() {
+                        /* Disables clicking option */
+                        clickDisabled = false;
+                    }, 1000);
+                }
+            }
+        }
+        $('.metrics').text("Number of moves: " + moves)
         if (moves <= 25) {
             rating = 3;
             drawStar(123, 102, 5, 30, 15, 'yellow');
@@ -136,81 +217,12 @@ function game() {
             drawStar(193, 102, 5, 30, 15, 'white');
             drawStar(263, 102, 5, 30, 15, 'white');
         }
-        setTimeout(function() {
-            /*Analyzes a pair of cards*/
-            if (clicks === 2) {
-                clicks = 0;
-                if (image_src[0] === image_src[1] & image_id[0] !== image_id[1]) {
-                    $(image_id[0]).removeClass().addClass("final")
-                    $(image_id[1]).removeClass().addClass("final")
-                    $(image_id[0]).parent().removeClass().addClass("final")
-                    $(image_id[1]).parent().removeClass().addClass("final")
-                    $(image_id[0]).parent().removeClass().addClass("final")
-                    $(image_id[1]).parent().removeClass().addClass("final")
-                    image_class = $('img').each(function() {
-                        image_class.push($(this))
-                    })
-                    for (var i = 0; i < image_class.length; ++i) {
-                        image_class[i] = $(image_class[i]).attr("class")
-                    }
-                    for (var i = 0; i < image_class.length; ++i) {
-                        if (image_class[i] === "final") {
-                            image_class[i] = 0
-                        } else {
-                            image_class[i] = 1
-                        }
-                    }
-                    for (var i = 0; i < image_class.length; ++i) {
-                        count = count + image_class[i]
-                    }
-                    if (count === 0) {
-                        $('body').empty()
-                        $('body').html(`
-                        <div class="main-element">
-                        <span>
-                            <b>CONGRATULATIONS!! YOU WON!!</b>
-                        </span>
-                        </br>
-                        <span class="message"></span>
-                        </br>
-                        </br>
-                        <div class="wraper">
-                            <button onclick="reload()">Play Again</button>
-                        </div>
-                
-                        </div>
-                        `)
-                        if (minutes === 0) {
-                            $('.message').text(moves + " moves" + ", " + rating + " star rating" + "and " +
-                                seconds + " seconds.")
-                        } else if (minutes === 1) {
-                            $('.message').text(moves + " moves" + ", " + rating + " star rating" + ", " +
-                                seconds + " seconds and " + minutes + " minute.")
-                        } else {
-                            $('.message').text(moves + " moves" + ", " + rating + " star rating" + ", " +
-                                seconds + " seconds and " + minutes + " minutes.")
-                        }
-
-                    }
-                } else {
-                    $(image_id[0]).removeClass().addClass("invisible")
-                    $(image_id[1]).removeClass().addClass("invisible")
-                }
-                image_id = [];
-                image_src = [];
-            }
-        }, 1000);
-        clickDisabled = true;
-        setTimeout(function() {
-            /*Disables clicking option*/
-            clickDisabled = false;
-        }, 1000);
     });
     $('.starter').remove()
     $('.game-container').css('visibility', 'visible')
 }
 
 function reload() {
-    /*When you win the game, the displayed button will allow you to restart the game*/
+    /* When you win the game, the displayed button will allow you to restart the game */
     location.reload();
 }
