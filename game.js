@@ -112,6 +112,7 @@ function game() {
     $('.metrics').text("Number of moves: " + moves)
     var clickDisabled = false;
     $("a").click(function() {
+        if ($(this).text() === "Restart") { return; };
         /* Generates the events after clicking */
         if (clickDisabled)
             return;
