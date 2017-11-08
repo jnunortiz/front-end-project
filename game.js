@@ -4,7 +4,7 @@ function game() {
     var minutes_timer = 0
     var hours_timer = 0
     var time
-    var interval = setInterval(function() {
+    var chronometer = setInterval(function() {
         seconds_all++;
         hours = Math.floor(seconds_all / 3600)
         hours_timer = Math.floor(seconds_all / 3600)
@@ -26,23 +26,24 @@ function game() {
     }, 1000);
     var list_images
     list_images = ['<img id="1" class="invisible" src="png\\penguin\\penguin-96.png" alt="pinguino">',
-        '<img id="2" class="invisible" src="png\\christmas_tree\\christmas_tree-96.png" alt="christmas tree">',
-        '<img id="3" class="invisible" src="png\\deer\\deer-96.png" alt="deer">',
-        '<img id="4" class="invisible" src="png\\candy_cane\\candy_cane-96.png" alt="candy"></a>',
-        '<img id="5" class="invisible" src="png\\deer\\deer-96.png" alt="deer">',
-        '<img id="6" class="invisible" src="png\\christmas_ball\\christmas_ball-96.png" alt="christmas ball">',
-        '<img id="7" class="invisible" src="png\\penguin\\penguin-96.png" alt="pinguino">',
-        '<img id="8" class="invisible" src="png\\gift\\gift-96.png" alt="gift">',
-        '<img id="9" class="invisible" src="png\\gift\\gift-96.png" alt="gift">',
-        '<img id="10" class="invisible" src="png\\star\\star-96.png" alt="star">',
-        '<img id="11" class="invisible" src="png\\santa\\santa-96.png" alt="santa">',
-        '<img id="12" class="invisible" src="png\\christmas_ball\\christmas_ball-96.png" alt="christmas ball">',
-        '<img id="13" class="invisible" src="png\\candy_cane\\candy_cane-96.png" alt="candy cane">',
-        '<img id="14" class="invisible" src="png\\christmas_tree\\christmas_tree-96.png" alt="christmas tree">',
-        '<img id="15" class="invisible" src="png\\santa\\santa-96.png" alt="santa">',
-        '<img id="16" class="invisible" src="png\\star\\star-96.png" alt="star">'
-    ]
-
+            '<img id="2" class="invisible" src="png\\christmas_tree\\christmas_tree-96.png" alt="christmas tree">',
+            '<img id="3" class="invisible" src="png\\deer\\deer-96.png" alt="deer">',
+            '<img id="4" class="invisible" src="png\\candy_cane\\candy_cane-96.png" alt="candy"></a>',
+            '<img id="5" class="invisible" src="png\\deer\\deer-96.png" alt="deer">',
+            '<img id="6" class="invisible" src="png\\christmas_ball\\christmas_ball-96.png" alt="christmas ball">',
+            '<img id="7" class="invisible" src="png\\penguin\\penguin-96.png" alt="pinguino">',
+            '<img id="8" class="invisible" src="png\\gift\\gift-96.png" alt="gift">',
+            '<img id="9" class="invisible" src="png\\gift\\gift-96.png" alt="gift">',
+            '<img id="10" class="invisible" src="png\\star\\star-96.png" alt="star">',
+            '<img id="11" class="invisible" src="png\\santa\\santa-96.png" alt="santa">',
+            '<img id="12" class="invisible" src="png\\christmas_ball\\christmas_ball-96.png" alt="christmas ball">',
+            '<img id="13" class="invisible" src="png\\candy_cane\\candy_cane-96.png" alt="candy cane">',
+            '<img id="14" class="invisible" src="png\\christmas_tree\\christmas_tree-96.png" alt="christmas tree">',
+            '<img id="15" class="invisible" src="png\\santa\\santa-96.png" alt="santa">',
+            '<img id="16" class="invisible" src="png\\star\\star-96.png" alt="star">'
+        ]
+        /*I obtained this function from:
+        stackoverflow and added the color parameter */
     function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
@@ -73,6 +74,8 @@ function game() {
         ctx.fill();
     }
 
+    /*I obtained this function from: 
+    https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array */
     function shuffle(a) {
         var j, x, i;
         for (i = a.length - 1; i > 0; i--) {
