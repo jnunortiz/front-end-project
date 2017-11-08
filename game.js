@@ -1,4 +1,5 @@
 function game() {
+    /*The function game will be called by the start button to initialize the game*/
     var seconds_all = 0
     var seconds_timer = 0
     var minutes_timer = 0
@@ -45,6 +46,7 @@ function game() {
         /*I obtained this function from:
         stackoverflow and added the color parameter */
     function drawStar(cx, cy, spikes, outerRadius, innerRadius, color) {
+        /*This function draws a star*/
         var canvas = document.getElementById("canvas");
         var ctx = canvas.getContext("2d");
         var rot = Math.PI / 2 * 3;
@@ -107,7 +109,10 @@ function game() {
     drawStar(193, 102, 5, 30, 15, 'yellow');
     drawStar(263, 102, 5, 30, 15, 'yellow');
     $('.metrics').text("Number of moves: " + moves)
+    var clickDisabled = false;
     $("a").click(function() {
+        if (clickDisabled)
+            return;
         moves = moves + 1
         $('.metrics').text("Number of moves: " + moves)
         count = 0
@@ -132,6 +137,7 @@ function game() {
             drawStar(263, 102, 5, 30, 15, 'white');
         }
         setTimeout(function() {
+            /*Analyzes a pair of cards*/
             if (clicks === 2) {
                 clicks = 0;
                 if (image_src[0] === image_src[1] & image_id[0] !== image_id[1]) {
@@ -194,11 +200,17 @@ function game() {
                 image_src = [];
             }
         }, 1000);
+        clickDisabled = true;
+        setTimeout(function() {
+            /*Disables clicking option*/
+            clickDisabled = false;
+        }, 1000);
     });
     $('.starter').remove()
     $('.game-container').css('visibility', 'visible')
 }
 
 function reload() {
+    /*When you win the game, the displayed button will allow you to restart the game*/
     location.reload();
 }
