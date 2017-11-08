@@ -7,47 +7,87 @@
     <title>The Matching Game</title>
     <link rel="stylesheet" href="game.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
+    <script src="game.js"></script>
 </head>
 
 <body>
     <div class="container">
         <div class="nav-bar">
             <ul>
-                <li class="home"><a href="#">Home</li></a>
-                <li class="header">MATCHING GAME</li>
+                <li class="home">
+                    <a href="#">Home</li>
+                </a>
+                    <li class="header">MATCHING GAME</li>
             </ul>
         </div>
+        <button class="starter" onclick="game()">START</button>
         <div class="game-container">
+            <div class="metrics-container">
+                <span class="metrics"></span>
+                <canvas id="canvas" width=300% height=130%></canvas>
+                <span class="timer"></span>
+            </div>
             <table align="center">
-                <tr >
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
+                <tr>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
                 </tr>
                 <tr>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
                 </tr>
                 <tr>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
                 </tr>
                 <tr>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
-                    <th><a href="#"></a></th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
+                    <th>
+                        <a class="pic" href="#"></a>
+                    </th>
                 </tr>
             </table>
         </div>
     </div>
-    <script src="game.js"></script>
+
 </body>
 
 </html>

@@ -1,4 +1,4 @@
-a:hover {
+.pic:hover {
     background-color: #4dff4d;
 }
 
@@ -7,7 +7,7 @@ body {
 }
 
 button {
-    background-color: #4d4dff;
+    background-color: #6b58d4;
     border: none;
     color: white;
     padding: 1.5% 2%;
@@ -15,6 +15,10 @@ button {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+}
+
+button:hover {
+    background-color: #180870;
 }
 
 .final {
@@ -27,7 +31,8 @@ button {
 }
 
 .game-container {
-    margin: 15%;
+    visibility: hidden;
+    padding: 5%;
 }
 
 .header {
@@ -72,17 +77,25 @@ li {
     margin-left: -32%;
 }
 
+.metrics {
+    font-size: 200%;
+}
+
+.metrics-container {
+    margin-bottom: 1%;
+}
+
 table {
     border: 10px solid #9999ff;
     background-color: #9999ff;
     border-collapse: separate;
     border-radius: 20px;
     table-layout: fixed;
-    width: 80%;
+    width: 100%;
 }
 
 th {
-    height: 80px;
+    height: 100px;
     text-align: center;
     border: 10px solid #9999ff;
     background-color: #99ff99;
@@ -99,8 +112,18 @@ th a {
     background-color: #009900;
 }
 
+.timer {
+    margin-left: 30%;
+}
+
 span {
     font-size: 300%;
+}
+
+.starter {
+    margin-top: 10%;
+    margin-left: 45.5%;
+    margin-bottom: -10%;
 }
 
 ul {
@@ -117,4 +140,8 @@ ul {
 
 .visible {
     visibility: visible;
+}
+
+.wraper {
+    margin-left: 44.5%;
 }
